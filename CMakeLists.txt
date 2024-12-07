@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 cmake_policy(SET CMP0025 NEW)
 project(tragediy)
+set(CMAKE_CXX_STANDARD 17)
 set(tragediy_VERSION_MAJOR 0)
 set(tragediy_VERSION_MINOR 1)
 
@@ -41,21 +42,6 @@ link_libraries(${Boost_LIBRARIES})
 # Disable Boost auto-linking since it conflicts with cmake:
 ADD_DEFINITIONS    ( -DBOOST_ALL_NO_LIB    )
 
-# Ensure C++14 compatibility.
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "5.0")
-		message(FATAL_ERROR "The project requires your compiler to support C++14 language features. The GCC only supports the relevant features as off version 5.0.")
-	endif()
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "3.4")
-		message(FATAL_ERROR "The project requires your compiler to support C++14 language features. The clang compiler only supports the relevant features as off version 3.4.")
-	endif()
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "5.1")
-		message(FATAL_ERROR "The project requires your compiler to support C++14 language features. Apple's clang compiler only supports the relevant features as off version 5.1.")
-	endif()
-endif()
-
 # --- Check Optional Built-time Dependencies ---
 
 if(USE_OPTIONALDEP)
@@ -68,7 +54,7 @@ endif()
 # --- Set Compiler Switches ---
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O3 -Wall -Werror -pedantic -g")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Werror -pedantic -g")
 endif()
 
 # --- Collect Sources and Headers ---

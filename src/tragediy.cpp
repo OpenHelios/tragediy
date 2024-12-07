@@ -26,19 +26,20 @@
 #include <tragediy/util/Math.h>
 #include <tragediy/util/Vector2.h>
 
-#include <boost/filesystem.hpp>
 #include <tragediy/track/AnkiDriveMap.h>
 #include <tragediy/track/AnkiOverdriveMap.h>
 
 #include <boost/program_options.hpp>
 
 #include <cassert>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 namespace po = boost::program_options;
+namespace fs = std::filesystem;
 
 std::string trackName_;
 boost::filesystem::path pathToAppData_;
@@ -51,7 +52,7 @@ double marginOverlap_ = 5.0;
 
 auto handleCommandlineArguments(int argc, char *argv[]) -> po::variables_map
 {
-	std::string appname{boost::filesystem::basename(argv[0])};
+	std::string appname{fs::path(argv[0]).filename()};
 	po::options_description options("Usage");
 	// clang-format off
     options.add_options()
