@@ -62,7 +62,8 @@ auto handleCommandlineArguments(int argc, char *argv[]) -> po::variables_map
     ("appdata,I", po::value<std::string>(), "path to the app data of Anki's android Drive or Overdrive app (e.g. ~/com.anki.drive)")
     ("import-drive,i", po::value<std::string>(), "Anki Drive map file to import from the app data (e.g. IntersecProduction_map.txt or oval32wide_8pc_map.txt)")
     ("import-overdrive,j", po::value<std::string>(), "Anki Overdrive map file to import from the app data (e.g. modular_gunner.txt or modular_capsule.txt)")
-    ("rotate", po::value<double>(), "rotate imported Anki maps by the given number of degrees");
+    ("rotate,r", po::value<double>(), "rotate imported Anki maps by the given number of degrees")
+    ;
 	// clang-format on
 	po::positional_options_description positionalOptions;
 
