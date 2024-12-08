@@ -113,7 +113,6 @@ struct AnkiOverdriveMap
 	std::map<AnkiOverdriveRoadPiece::FullIdentifier, AnkiOverdriveRoadPieceDescription> roadPieceDescriptions_;
 	AnkiFinishLine finishLine_;
 	double offsetX_, offsetY_, theta_;
-	double thetaExtra_{0.0};
 
 	bool isValid() const;
 
