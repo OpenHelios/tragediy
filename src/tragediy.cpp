@@ -36,7 +36,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <vector>
 
 namespace po = boost::program_options;
 namespace fs = std::filesystem;
