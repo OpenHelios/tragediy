@@ -74,6 +74,7 @@ struct AnkiDriveMap
 	AnkiFinishLine finishLine_;
 	double offsetX_, offsetY_, theta_;
 
+	void resetTheta();
 	bool isValid() const;
 
 	void loadRacingMap(boost::filesystem::path &pathToAppData, const char *name);

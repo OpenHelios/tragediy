@@ -31,6 +31,12 @@
 #include <string>
 #include <vector>
 
+void AnkiDriveMap::resetTheta()
+{
+	theta_ = 0.0;
+	std::cout << "Override theta with zero." << std::endl;
+}
+
 std::istream &operator>>(std::istream &in, AnkiDriveRoadPieceLocation &location)
 {
 	skipAhead(in) >> location.x_;
