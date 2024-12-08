@@ -144,6 +144,7 @@ std::istream &operator>>(std::istream &in, AnkiDriveMap &track)
 	skipAhead(in) >> track.offsetX_;
 	skipAhead(in) >> track.offsetY_;
 	skipAhead(in) >> track.theta_;
+	std::cout << "theta = " << track.theta_ << std::endl;
 
 	if (!in)
 	{
