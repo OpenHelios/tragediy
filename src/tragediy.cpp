@@ -296,6 +296,11 @@ void createTiledTrackSVG(const BoundingBox &bbTrack, const Track &track, std::si
 	}
 }
 
+static fs::path getBasename(const fs::path &path)
+{
+	return path.stem();
+}
+
 int main(int argc, char *argv[])
 {
 	po::variables_map vm;
@@ -305,13 +310,23 @@ int main(int argc, char *argv[])
 		prefix_ = vm["prefix"].as<std::string>();
 	else
 	{
-		if (trackName_.empty())
+		if (!trackName_.empty())
 		{
-			std::cout << "ERROR: When importing tracks from Anki app data --prefix is mandatory." << std::endl;
+			prefix_ = trackName_;
+		}
+		else if (!mapFileDrive_.empty())
+		{
+			prefix_ = getBasename(mapFileDrive_);
+		}
+		else if (!mapFileOverdrive_.empty())
+		{
+			prefix_ = getBasename(mapFileOverdrive_);
+		}
+		else
+		{
+			std::cerr << "ERROR: When importing tracks from Anki app data --prefix is mandatory." << std::endl;
 			std::exit(EXIT_FAILURE);
 		}
-
-		prefix_ = trackName_;
 	}
 
 	if (vm.count("size"))
